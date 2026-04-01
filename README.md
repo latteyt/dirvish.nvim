@@ -142,4 +142,3 @@ A: Ensure your `NonText` highlight group is visible (most colorschemes support i
 
 **Enjoy!**
 Feel free to open Issues or PRs — let's make dirvish.nvim the smoothest directory experience in Neovim ✨
-```
