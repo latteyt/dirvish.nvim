@@ -1,4 +1,3 @@
-```markdown
 # dirvish.nvim
 
 A **minimal** directory browser for Neovim.
