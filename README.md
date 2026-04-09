@@ -32,6 +32,8 @@ Zero external dependencies. Requires Neovim 0.10+ (uses `vim.uv`).
 
 ## Preview
 
+https://github.com/latteyt/dirvish.nvim/raw/main/demo.gif
+
 (What it actually looks like — adapts automatically to your colorscheme)
 
 - Clean directory view with permissions, size, time, and symlink arrows
