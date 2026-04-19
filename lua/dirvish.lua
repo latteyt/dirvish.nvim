@@ -140,8 +140,8 @@ local function shdo(paths, cmd)
   vim.list.unique(lines)
 
   local bufnr = vim.api.nvim_create_buf(false, true)
-
-  vim.api.nvim_buf_set_name(bufnr, "[HACKVIM]")
+  local cwd = vim.fn.getcwd()
+  vim.api.nvim_buf_set_name(bufnr, "[HACKVIM] - " .. cwd)
   vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
   vim.bo[bufnr].bufhidden = "wipe"
   vim.bo[bufnr].buflisted = false
@@ -151,6 +151,7 @@ local function shdo(paths, cmd)
   vim.bo[bufnr].buftype = "acwrite"
   vim.bo[bufnr].modified = false
   vim.cmd('silent split | buffer ' .. bufnr)
+  vim.cmd('lcd ' .. cwd)
 
   vim.api.nvim_clear_autocmds({ event = "BufWriteCmd", buffer = bufnr })
   vim.api.nvim_create_autocmd("BufWriteCmd", {
