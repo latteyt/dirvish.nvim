@@ -92,6 +92,9 @@ local function hijack(bufnr)
   local displays = {}
   for b, t in vim.fs.dir(dirpath) do
     local fullpath = dirpath .. b
+    if fullpath:find('\n') then
+      error(fullpath .. " contains an invalid character")
+    end
     table.insert(displays,
       t == "directory" and fullpath .. "/" or fullpath
     )
@@ -102,7 +105,7 @@ local function hijack(bufnr)
   vim.bo[bufnr].undolevels = undolevels
 
   -- set the MRU file path
-  for j, o in ipairs(vim.v.oldfiles) do
+  for _, o in ipairs(vim.v.oldfiles) do
     for i, f in ipairs(displays) do
       if o:find(f, 1, true) then
         vim.fn.cursor(i, #dirpath)
